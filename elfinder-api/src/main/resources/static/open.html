@@ -1,0 +1,78 @@
+<html>
+<head>
+    <!-- elFinder CSS (REQUIRED) -->
+    <link rel="stylesheet" type="text/css" href="./elfinder/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="./elfinder/css/custom.css">
+    <script src="./elfinder/js/jquery-1.11.1.js"></script>
+    <!-- elFinder JS (REQUIRED) -->
+    <script src="./elfinder/js/elfinder.min.js"></script>
+    <!-- elFinder translation (OPTIONAL) -->
+    <script src="./elfinder/js/i18n/elfinder.zh_CN.js"></script>
+    <script src="./elfinder/js/extras/quicklook.googledocs.js"></script>
+    <script src="./elfinder/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./elfinder/ace/ext-modelist.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./elfinder/ace/ext-settings_menu.js"></script>
+    <script src="./elfinder/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="./common/utils.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            elFinder.prototype.loadCss('./elfinder/jquery-ui-1.12.1.custom/jquery-ui.css');
+            $('#elfinder').elfinder({
+                url : '/elfinder/connector',
+                lang: 'zh_CN',
+                //cssAutoLoad : ['themes/material/css/theme.css'],
+                height : window.innerHeight,
+                /*commands : [
+                    'custom','open', 'reload', 'home', 'up', 'back', 'forward', 'getfile', 'quicklook',
+                    'download', 'rm', 'duplicate', 'rename', 'mkdir', 'mkfile', 'upload', 'copy',
+                    'cut', 'paste', 'edit', 'extract', 'archive', 'search', 'info', 'view', 'help', 'resize', 'sort', 'netmount'
+                ],
+                contextmenu : {
+                    // navbarfolder menu
+                    navbar : ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
+                    // current directory menu
+                    cwd    : ['reload', 'back', '|', 'upload', 'mkdir', 'mkfile', 'paste', '|', 'sort', '|', 'info'],
+                    // current directory file menu
+                    files  : ['getfile', '|', 'custom', 'quicklook', '|', 'download', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'edit', 'rename', 'resize', '|', 'archive', 'extract', '|', 'info']
+                },*/
+                commands : [
+                    'open', 'reload', 'home', 'up', 'back', 'forward', 'getfile', 'quicklook',
+                    'download', 'mkdir', 'upload', 'search', 'view', 'sort'
+                ],
+                contextmenu : {
+                    // navbarfolder menu
+                    navbar : ['open', '|', 'info'],
+                    // current directory menu
+                    cwd    : ['reload', 'back', '|', 'upload', 'mkdir', 'mkfile', '|', 'sort', '|', 'info'],
+                    // current directory file menu
+                    files  : ['getfile', '|', 'quicklook', 'info']
+                },
+                bootCallback : function(fm, extraObj) {
+                    delete fm.commands.rm;
+                    delete fm.commands.copy;
+                    delete fm.commands.paste;
+                },
+                commandsOptions: {
+                    getfile: { multiple: true },
+                    quicklook : {
+                        googleMapsApiKey : 'AIzaSyAmQiMcWI1e0QryaAHuGNblqJ9xRE2NXL8',
+                        sharecadMimes : ['image/vnd.dwg', 'image/vnd.dxf', 'model/vnd.dwf', 'application/vnd.hp-hpgl', 'application/plt', 'application/step', 'model/iges', 'application/vnd.ms-pki.stl', 'application/sat', 'image/cgm', 'application/x-msmetafile'],
+                        googleDocsMimes : ['application/pdf', 'image/tiff', 'application/vnd.ms-office', 'application/msword', 'application/vnd.ms-word', 'application/vnd.ms-excel', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/postscript', 'application/rtf'],
+                        officeOnlineMimes : ['application/msword', 'application/vnd.ms-word', 'application/vnd.ms-excel', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.oasis.opendocument.text', 'application/vnd.oasis.opendocument.spreadsheet', 'application/vnd.oasis.opendocument.presentation']
+                    }
+                },
+                getFileCallback: function (files) { // editor callback
+                    if(files && files.length > 0 && mimeMode[files[0].mime]){
+                        window.open("./md.html?file="+files[0].hash);
+                    }else{
+                        $('#elfinder').elfinder('instance').exec('download');
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="elfinder"></div>
+</body>
+</html>

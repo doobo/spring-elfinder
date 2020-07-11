@@ -1,0 +1,6 @@
+.idea
+.DS_Store
+elfinder-web/target
+elfinder-core/target
+*.iml
+data/
