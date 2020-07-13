@@ -5,9 +5,10 @@
 	<groupId>com.github.doobo</groupId>
 	<artifactId>elfinder-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 
 	<name>elfinder-parent</name>
+	<url>https://github.com/doobo/spring-elfinder</url>
 	<description>A web file manager system demo base on spring boot </description>
 
 	<licenses>
@@ -19,8 +20,7 @@
 	</licenses>
 
 	<scm>
-		<tag>v1.0</tag>
-		<url>https://github.com/doobo/spring-elfinder</url>
+		<url>scm:https://github.com/doobo/spring-elfinder</url>
 		<connection>scm:git:git@github.com:doobo/spring-elfinder.git</connection>
 		<developerConnection>scm:git:git@github.com:doobo/spring-elfinder.git</developerConnection>
 	</scm>
@@ -55,6 +55,7 @@
 		<java.version>1.8</java.version>
 		<javadoc.version>8</javadoc.version>
 		<compiler-plugin.version>3.6.2</compiler-plugin.version>
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<war-plugin.version>3.1.0</war-plugin.version>
 		<clean-plugin.version>3.0.0</clean-plugin.version>
 		<resources-plugin.version>3.0.2</resources-plugin.version>
@@ -145,9 +146,13 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+					<compilerArgs>
+						<arg>-Xlint:unchecked</arg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>

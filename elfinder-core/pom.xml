@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.github.doobo</groupId>
         <artifactId>elfinder-parent</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     
     <artifactId>elfinder-core</artifactId>
@@ -18,15 +18,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java-source-level.version>1.8</java-source-level.version>
         <java-target-level.version>1.8</java-target-level.version>
-
-        <!-- maven plugins versions -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-        <maven-source-plugin.version>3.0.0</maven-source-plugin.version>
-        <maven-jar-plugin.version>2.6</maven-jar-plugin.version>
-        <maven-jaxb2-plugin.version>0.12.3</maven-jaxb2-plugin.version>
-        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <license-maven-plugin.version>1.8</license-maven-plugin.version>
 
         <!-- elfinder java connector dependencies versions -->
         <servlet-api.version>3.1.0</servlet-api.version>
@@ -172,19 +163,5 @@
             <version>1.11.0-beta</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java-source-level.version}</source>
-                    <target>${java-target-level.version}</target>
-                    <optimize>true</optimize>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     
 </project>
