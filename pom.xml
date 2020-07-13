@@ -5,7 +5,7 @@
 	<groupId>com.github.doobo</groupId>
 	<artifactId>elfinder-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 
 	<name>elfinder-parent</name>
 	<description>A web file manager system demo base on spring boot </description>
