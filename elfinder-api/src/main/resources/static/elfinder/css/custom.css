@@ -1,0 +1,32 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+.elfinder-navbar-root-aliyun .elfinder-cwd-icon,
+.elfinder-cwd .elfinder-navbar-root-aliyun.elfinder-droppable-active .elfinder-cwd-icon,
+.elfinder-cwd-view-list .elfinder-navbar-root-aliyun td .elfinder-cwd-icon {
+    background-image: url("../img/volume_icon_onedrive.svg");
+    background-image: url("../img/volume_icon_onedrive.png") \9;
+    background-position: 0 0;
+    background-size: contain;
+}
+
+.elfinder-cwd .elfinder-navbar-root-aliyun.elfinder-droppable-active .elfinder-cwd-icon{
+    background-position: 1px -1px;
+}
+
+/* root folder */
+.elfinder-tree .elfinder-navbar-root-aliyun .elfinder-navbar-icon{
+    background-position: 0 0;
+    background-size: contain;
+}
+
+.elfinder-tree .elfinder-navbar-root-aliyun .elfinder-navbar-icon {
+    background-image: url("../img/volume_icon_onedrive.svg");
+    background-image: url("../img/volume_icon_onedrive.png") \9;
+}
+
+.elfinder-navbar-root-aliyun.elfinder-contextmenu-icon {
+    background-image: url("../img/volume_icon_onedrive.svg");
+    background-size: contain;
+}
