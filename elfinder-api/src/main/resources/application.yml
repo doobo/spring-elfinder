@@ -16,7 +16,7 @@ file-manager:
     - Node:
       source: fileSystem # 暂时只支持本地文件系统
       alias: 文件夹 # 目录别名
-      path: /opt/www # 映射目录
+      path: data # 映射目录
       isDefault: true # 是否默认打开
       locale:
       constraint:
