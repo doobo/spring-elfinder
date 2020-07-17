@@ -5,7 +5,7 @@
 	<groupId>com.github.doobo</groupId>
 	<artifactId>elfinder-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 
 	<name>elfinder-parent</name>
 	<url>https://github.com/doobo/spring-elfinder</url>
@@ -23,7 +23,7 @@
 		<url>scm:https://github.com/doobo/spring-elfinder</url>
 		<connection>scm:git:git@github.com:doobo/spring-elfinder.git</connection>
 		<developerConnection>scm:git:git@github.com:doobo/spring-elfinder.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>v1.1</tag>
   </scm>
 
 	<distributionManagement>
