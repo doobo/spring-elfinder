@@ -50,7 +50,6 @@ import java.util.concurrent.Executors;
 
 public abstract class AbstractCommand implements ElfinderCommand {
 
-    // visible to subclasses
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     private static final String CMD_TMB_TARGET = "?cmd=tmb&target=%s";

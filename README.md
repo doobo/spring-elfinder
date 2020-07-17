@@ -12,6 +12,7 @@
     <version>1.0</version>
 </dependency>
 ```
+
 ## 请求示例
 * https://localhost:8080/fm.html
 * https://localhost:8080/open.html
@@ -73,6 +74,25 @@ file-manager:
 #        #bindedDomain: "cdn-bk1.origocoffee.com"
 #        accessKeyId: ENC(******)
 #        accessKeySecret: ENC(******)
+```
+
+## JSON包排除
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+    <exclusions>
+        <exclusion>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+        <exclusion>
+            <groupId>com.vaadin.external.google</groupId>
+            <artifactId>android-json</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
 ```
 
 ## 参考文献

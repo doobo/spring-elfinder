@@ -56,7 +56,6 @@ public class ZipdlCommand extends AbstractCommand implements ElfinderCommand {
 		final String[] targets = request.getParameterValues(ElFinderConstants.ELFINDER_PARAMETER_TARGETS);
 		boolean download = request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_DOWNLOAD) != null;
 		if (download) {
-//			String cwd = targets[0];
 			String archiveFileTarget = targets[1];
 			String downloadFileName = targets[2];
 			String mime = targets[3];

@@ -59,27 +59,6 @@ public abstract class AbstractJsonCommand extends AbstractCommand {
             logger.error("Unable to execute abstract json command", e);
             json.put(ElFinderConstants.ELFINDER_JSON_RESPONSE_ERROR, e.getMessage());
         }
-
-        /*PrintWriter writer = response.getWriter();
-        try {
-            execute(elfinderStorage, request, json);
-            response.setContentType(APPLICATION_JSON_CHARSET_UTF_8);
-            //禁止fastjson的循环引用，会导致目录结构不准确
-            String js = JSON.toJSONString(json, SerializerFeature.DisableCircularReferenceDetect);
-            writer.write(js);
-            //writer.write(json.toJSONString());
-//            json.write(writer);
-            writer.flush();
-        } catch (Exception e) {
-            logger.error("Unable to execute abstract json command", e);
-            json.put(ElFinderConstants.ELFINDER_JSON_RESPONSE_ERROR, e.getMessage());
-            writer.write(json.toJSONString());
-//            json.write(writer);
-            writer.flush();
-        }
-        finally {
-            writer.close();
-        }*/
     }
 
 }

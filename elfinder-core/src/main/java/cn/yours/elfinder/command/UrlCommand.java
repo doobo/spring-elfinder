@@ -14,17 +14,6 @@ public class UrlCommand extends AbstractJsonCommand implements ElfinderCommand {
     protected void execute(ElfinderStorage elfinderStorage, HttpServletRequest request, JSONObject json) throws Exception {
         final String target = request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_TARGET);
         VolumeHandler file = findTarget(elfinderStorage, target);
-        json.put(ElFinderConstants.ELFINDER_PARAMETER_URL, "http://wwww.baidu.com");
-
-        /*final String target = request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_TARGET);
-        VolumeHandler file = findTarget(elfinderStorage, target);
-        json.put(ElFinderConstants.ELFINDER_JSON_RESPONSE_ADDED, new Object[]{getTargetInfo(request, file)});*/
-
-        /*final VolumeHandler vh = findTarget(elfinderStorage, target);
-        final InputStream is = vh.openInputStream();
-        final String content = IOUtils.toString(is, ENCODING);
-        is.close();
-        json.put(ElFinderConstants.ELFINDER_PARAMETER_CONTENT, content);*/
-
+        json.put(ElFinderConstants.ELFINDER_PARAMETER_URL, "http://wwww.5fu8.com");
     }
 }

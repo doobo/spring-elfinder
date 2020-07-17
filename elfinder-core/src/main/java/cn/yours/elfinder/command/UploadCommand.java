@@ -52,7 +52,6 @@ public class UploadCommand extends AbstractJsonCommand implements ElfinderComman
 
     private static final org.slf4j.Logger _logger = LoggerFactory.getLogger(UploadCommand.class);
 
-    // large file will be splitted into many parts
     class Part
     {
         long _start;
@@ -68,7 +67,6 @@ public class UploadCommand extends AbstractJsonCommand implements ElfinderComman
         }
     }
 
-    // a large file with many parts
     static class Parts
     {
         public static synchronized Parts getOrCreate(
