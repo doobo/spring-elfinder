@@ -7,8 +7,8 @@
     <link rel="stylesheet" type="text/css" href="./elfinder/css/theme.css">
     <link rel="stylesheet" type="text/css" href="./elfinder/css/custom.css">
     <script src="./elfinder/js/jquery-1.11.1.js"></script>
-    <script src="common/utils.js"></script>
     <script src="./elfinder/js/elfinder.min.js"></script>
+    <script src="common/utils.js"></script>
     <script src="./elfinder/js/i18n/elfinder.zh_CN.js"></script>
     <script src="./elfinder/js/extras/quicklook.googledocs.js"></script>
     <script src="./elfinder/ace/ace.js" type="text/javascript" charset="utf-8"></script>
@@ -178,6 +178,11 @@
                 }
             });
         });
+        if(elFinder) {
+            elFinder.prototype.formatDate = function (data) {
+                return new Date(data.ts).toLocaleString();
+            }
+        }
     </script>
     <style type="text/css">
         #place-root-elfinder-elfinder{display: none;}

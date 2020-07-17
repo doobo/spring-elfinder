@@ -38,6 +38,11 @@ spring:
       charset: utf-8
       force: true
       enabled: true
+  #大文件上传
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 30GB
       
 file-manager:
   thumbnail:

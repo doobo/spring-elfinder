@@ -4,6 +4,10 @@ spring:
       charset: utf-8
       force: true
       enabled: true
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 30GB
       
 jasypt:
   encryptor:

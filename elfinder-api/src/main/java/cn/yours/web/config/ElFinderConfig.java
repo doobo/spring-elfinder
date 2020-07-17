@@ -16,7 +16,6 @@ import cn.yours.elfinder.service.impl.DefaultElfinderStorageFactory;
 import cn.yours.elfinder.service.impl.DefaultThumbnailWidth;
 import cn.yours.elfinder.support.locale.LocaleUtils;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
