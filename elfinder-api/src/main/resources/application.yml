@@ -19,7 +19,7 @@ file-manager:
   volumes:
     - Node:
       source: fileSystem # 暂时只支持本地文件系统
-      alias: 文件夹 # 目录别名
+      alias: 系统目录 # 目录别名
       path: data # 映射目录
       isDefault: true # 是否默认打开
       locale:

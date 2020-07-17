@@ -170,8 +170,6 @@
                 getFileCallback: function (files) {
                     if(files && files.length > 0 && mimeMode[files[0].mime]){
                         window.open("./md.html?file="+files[0].hash);
-                    }else if(files && files.length > 0 && files[0].mime.indexOf("application") > -1){
-                        window.open("./md.html?file="+files[0].hash);
                     }else if(files && files.length > 0 && files[0].mime.indexOf("text")>-1){
                         window.open("./md.html?file="+files[0].hash);
                     }else{

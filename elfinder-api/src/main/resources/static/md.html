@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="elfinder/js/jquery-1.11.1.js"></script>
+    <script src="./common/sweetalert2@9.js"></script>
     <script src="./common/utils.js"></script>
     <style type="text/css">
         body{
@@ -25,6 +26,12 @@
     (function () {
         var file = queryUrlParam("file");
         if(file){
+            swal.fire({
+                title: "...",
+                showConfirmButton: false,
+                imageUrl: "./images/loading@2x.gif",
+                showCancelButton: false
+            });
             $.ajax({
                 type:"GET",
                 url:"./elfinder/connector",
@@ -67,14 +74,17 @@
                             }
                         }
                     });
+                    setTimeout(function(){
+                        $(".swal2-center").css("display","none");
+                    }, 1000);
                 },
                 error:function (err) {
+                    $(".swal2-center").css("display","none");
                     console.error(err);
                 }
             });
         }
     })();
 </script>
-<script src="./common/sweetalert2@9.js"></script>
 </body>
 </html>

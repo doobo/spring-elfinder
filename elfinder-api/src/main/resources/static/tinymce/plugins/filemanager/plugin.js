@@ -40,7 +40,7 @@
     editor.addCommand('OpenFileManager', function () {
 
       editor.windowManager.openUrl({
-        url: "/fmsel.html",
+        url: "./link.html",
         title: '文件管理器',
         width: 1100,
         height: 600

@@ -64,13 +64,8 @@
                     }
                 },
                 getFileCallback: function (files) {//editor callback
-                    if(files && files.length > 0 && mimeMode[files[0].mime]){
-                        window.open("./md.html?file="+files[0].hash);
-                    }else if(files && files.length > 0 && files[0].mime.indexOf("text")>-1){
-                        window.open("./md.html?file="+files[0].hash);
-                    }else{
-                        $('#elfinder').elfinder('instance').exec('download');
-                    }
+                    files = $.map(files, function(f) { return f; });
+                    window.parent.postMessage(files, '*');
                 }
             });
         });

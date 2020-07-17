@@ -36,5 +36,6 @@ var mimeMode = {
     'application/json'        : 'xml',
     'text/x-ini'              : 'xml',
     'application/x-sh'        : 'xml',
+    'application/x-bat'       : 'xml',
     'text/x-web-markdown'     : 'xml'
 };
