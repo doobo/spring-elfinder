@@ -34,5 +34,7 @@ var mimeMode = {
     'application/xml'         : 'xml',
     'text/plain'              : 'xml',
     'application/json'        : 'xml',
+    'text/x-ini'              : 'xml',
+    'application/x-sh'        : 'xml',
     'text/x-web-markdown'     : 'xml'
 };

@@ -18,7 +18,7 @@
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
             elFinder.prototype.loadCss('./elfinder/jquery-ui-1.12.1.custom/jquery-ui.css');
-            $('#elfinder').elfinder({
+            window._elfinder = $('#elfinder').elfinder({
                 url : '/elfinder/connector',
                 lang: 'zh_CN',
                 //cssAutoLoad : ['themes/material/css/theme.css'],
@@ -154,6 +154,7 @@
                                     instance && $(textarea).data('ace') && instance.focus();
                                 },
                                 resize : function(textarea, instance, e, data) {
+                                    console.log(157);
                                     instance && instance.resize();
                                 }
                             }
@@ -169,20 +170,17 @@
                 getFileCallback: function (files) {
                     if(files && files.length > 0 && mimeMode[files[0].mime]){
                         window.open("./md.html?file="+files[0].hash);
+                    }else if(files && files.length > 0 && files[0].mime.indexOf("application") > -1){
+                        window.open("./md.html?file="+files[0].hash);
+                    }else if(files && files.length > 0 && files[0].mime.indexOf("text")>-1){
+                        window.open("./md.html?file="+files[0].hash);
                     }else{
                         $('#elfinder').elfinder('instance').exec('download');
-                        setTimeout(function () {
-                            $(".elfinder-notify-button.ui-icon-close").click();
-                        }, 1000);
                     }
                 }
             });
         });
-        if(elFinder) {
-            elFinder.prototype.formatDate = function (data) {
-                return new Date(data.ts).toLocaleString();
-            }
-        }
+        
     </script>
     <style type="text/css">
         #place-root-elfinder-elfinder{display: none;}
@@ -193,5 +191,14 @@
 </head>
 <body>
 <div id="elfinder"></div>
+<script type="text/javascript">
+    (function(){
+        if(elFinder) {
+            elFinder.prototype.formatDate = function (data) {
+                return new Date(data.ts).toLocaleString();
+            }
+        }
+    })();
+</script>
 </body>
 </html>

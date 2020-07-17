@@ -13,7 +13,6 @@
     <description>A api file manager system demo base on spring boot </description>
     
     <properties>
-        <!-- maven plugins versions -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java-source-level.version>1.8</java-source-level.version>
