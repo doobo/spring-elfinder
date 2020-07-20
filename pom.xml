@@ -24,7 +24,7 @@
 		<connection>scm:git:git@github.com:doobo/spring-elfinder.git</connection>
 		<developerConnection>scm:git:git@github.com:doobo/spring-elfinder.git</developerConnection>
 	  <tag>HEAD</tag>
-  </scm>
+  	</scm>
 
 	<distributionManagement>
 		<repository>
