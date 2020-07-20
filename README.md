@@ -2,20 +2,22 @@
 
 > 简单的文件管理工具,基于springboot2,主要方便集成到项目中去,方便浏览系统文件,如日志、系统定时生成静态页面等
 
-关于权限问题，不在该项目的考虑范围内，自己拦截相关URL即可，也可用专门的权限框架实现。
+关于权限问题，不在该项目的考虑范围内，自己拦截相关URL即可，也可用专门的权限框架实现。集成的md文档编辑器,方便编辑普通文本文件
 
 ## 如何添加
 ```
 <dependency>
     <groupId>com.github.doobo</groupId>
     <artifactId>elfinder-api</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 </dependency>
 ```
 
 ## 请求示例
 * https://localhost:8080/fm.html
 * https://localhost:8080/open.html
+* https://localhost:8080/link.html
+* https://localhost:8080/tinymce.html
 
 ## 文件列表
 * http://localhost:8080/elfinder/connector?cmd=open&init=1&tree=1
