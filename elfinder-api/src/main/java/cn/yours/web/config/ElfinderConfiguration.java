@@ -3,11 +3,11 @@ package cn.yours.web.config;
 import cn.yours.elfinder.param.Node;
 import cn.yours.elfinder.param.Thumbnail;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Configuration
+@Component
 @ConfigurationProperties(prefix="file-manager")
 public class ElfinderConfiguration {
 

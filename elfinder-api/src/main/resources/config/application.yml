@@ -8,7 +8,7 @@ spring:
     multipart:
       max-file-size: 10GB
       max-request-size: 30GB
-      
+
 jasypt:
   encryptor:
     password: abc
