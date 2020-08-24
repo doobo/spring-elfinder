@@ -32,7 +32,7 @@
 package cn.yours.elfinder.exception;
 
 /**
- * Elfinder COnfiguration Exception.
+ * Elfinder Configuration Exception.
  *
  * @author Thiago Gutenberg Carvalho da Costa
  */

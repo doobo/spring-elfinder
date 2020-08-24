@@ -32,6 +32,8 @@
 package cn.yours.elfinder.command;
 
 import cn.yours.elfinder.ElFinderConstants;
+import cn.yours.elfinder.configuration.CmdObserved;
+import cn.yours.elfinder.param.ObServerVO;
 import cn.yours.elfinder.service.ElfinderStorage;
 import org.json.JSONObject;
 
@@ -47,11 +49,15 @@ public abstract class AbstractJsonCommand extends AbstractCommand {
 
     @Override
     final public void execute(ElfinderStorage elfinderStorage, HttpServletRequest request, HttpServletResponse response) throws Exception {
-
         JSONObject json = new JSONObject();
-
         try (PrintWriter writer = response.getWriter()) {
             execute(elfinderStorage, request, json);
+            if(CmdObserved.INSTANCE != null) {
+                ObServerVO vo = new ObServerVO()
+                        .setResult(json)
+                        .setCmd(request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_COMMAND));
+                CmdObserved.INSTANCE.sendCmdResult(vo);
+            }
             response.setContentType(APPLICATION_JSON_CHARSET_UTF_8);
             json.write(writer);
             writer.flush();

@@ -64,11 +64,10 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- java ee -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet-api.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.2.6.RELEASE</version>
             <optional>true</optional>
         </dependency>
 
