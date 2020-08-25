@@ -2,14 +2,16 @@
 
 > 简单的文件管理工具,基于springboot2,主要方便集成到项目中去,方便浏览系统文件,如日志、系统定时生成静态页面等
 
-关于权限问题，不在该项目的考虑范围内，自己拦截相关URL即可，也可用专门的权限框架实现。集成的md文档编辑器,方便编辑普通文本文件
+关于权限问题，不在该项目的考虑范围内，自己拦截相关URL即可，也可用专门的权限框架实现。集成的md文档编辑器,方便编辑普通文本文件;
+相关页面调用http接口时，如果localstorage有token或者authorization时，会自动加入的ajx的header上,添加了执行结束后广播，
+方便在文件操作完成(如:文件上传、删除、压缩、下载)时，进行相关业务处理，继承CmdObserver抽象类，并暴露被bean容器即可。
 
 ## 如何添加
 ```
 <dependency>
     <groupId>com.github.doobo</groupId>
     <artifactId>elfinder-api</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
 </dependency>
 ```
 
