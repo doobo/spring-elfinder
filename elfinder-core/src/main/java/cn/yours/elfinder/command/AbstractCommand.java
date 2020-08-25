@@ -109,7 +109,7 @@ public abstract class AbstractCommand implements ElfinderCommand {
         return cwd;
     }
 
-    protected VolumeHandler findTarget(ElfinderStorage elfinderStorage, String hash) {
+    public static VolumeHandler findTarget(ElfinderStorage elfinderStorage, String hash) {
         Target target = elfinderStorage.fromHash(hash);
         if (target == null) {
             return null;

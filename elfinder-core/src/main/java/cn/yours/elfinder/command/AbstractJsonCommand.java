@@ -41,6 +41,9 @@ import org.json.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public abstract class AbstractJsonCommand extends AbstractCommand {
 
@@ -56,10 +59,8 @@ public abstract class AbstractJsonCommand extends AbstractCommand {
             if(CmdObserved.isObserver()) {
                 ObServerVO vo = new ObServerVO()
                         .setResult(json)
+                        .setElfinderStorage(elfinderStorage)
                         .setCmd(request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_COMMAND));
-                String target = request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_TARGET);
-                VolumeHandler parentDir = findTarget(elfinderStorage, target);
-                vo.setPath(parentDir);
                 CmdObserved.getInstance().sendCmdResult(vo);
             }
             response.setContentType(APPLICATION_JSON_CHARSET_UTF_8);

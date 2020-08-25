@@ -1,8 +1,11 @@
 package cn.yours.elfinder.param;
 
+import cn.yours.elfinder.service.ElfinderStorage;
 import cn.yours.elfinder.service.VolumeHandler;
 import org.json.JSONObject;
 import java.io.Serializable;
+
+import static cn.yours.elfinder.command.AbstractCommand.findTarget;
 
 /**
  * 广播信息载体
@@ -20,9 +23,9 @@ public class ObServerVO implements Serializable {
     private JSONObject result;
 
     /**
-     * 添加目录信息
+     * 存储库信息
      */
-    private VolumeHandler path;
+    private ElfinderStorage elfinderStorage;
     
     public ObServerVO() {
     }
@@ -45,12 +48,20 @@ public class ObServerVO implements Serializable {
         return this;
     }
 
-    public VolumeHandler getPath() {
-        return path;
+    public ElfinderStorage getElfinderStorage() {
+        return elfinderStorage;
     }
 
-    public ObServerVO setPath(VolumeHandler path) {
-        this.path = path;
+    public ObServerVO setElfinderStorage(ElfinderStorage elfinderStorage) {
+        this.elfinderStorage = elfinderStorage;
         return this;
+    }
+
+    /**
+     * 通过target的code获取文件信息
+     * @param code
+     */
+    public VolumeHandler getVolumeHandlerByHash(String code){
+        return findTarget(elfinderStorage, code);
     }
 }
