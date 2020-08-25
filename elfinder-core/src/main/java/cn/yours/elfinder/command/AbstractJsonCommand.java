@@ -52,11 +52,11 @@ public abstract class AbstractJsonCommand extends AbstractCommand {
         JSONObject json = new JSONObject();
         try (PrintWriter writer = response.getWriter()) {
             execute(elfinderStorage, request, json);
-            if(CmdObserved.INSTANCE != null) {
+            if(CmdObserved.isObserver()) {
                 ObServerVO vo = new ObServerVO()
                         .setResult(json)
                         .setCmd(request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_COMMAND));
-                CmdObserved.INSTANCE.sendCmdResult(vo);
+                CmdObserved.getInstance().sendCmdResult(vo);
             }
             response.setContentType(APPLICATION_JSON_CHARSET_UTF_8);
             json.write(writer);

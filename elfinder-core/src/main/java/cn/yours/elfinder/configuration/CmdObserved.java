@@ -15,7 +15,9 @@ import java.util.Observer;
 @Component
 public class CmdObserved extends Observable {
     
-    public static CmdObserved INSTANCE;
+    private static CmdObserved INSTANCE;
+    
+    private static boolean IS_OBSERVE;
 
     @Autowired(required = false)
     private List<Observer> observerList;
@@ -27,6 +29,7 @@ public class CmdObserved extends Observable {
     public void observerRegister() {
         if(observerList != null && !observerList.isEmpty()) {
             observerList.forEach(this::addObserver);
+            IS_OBSERVE = true;
         }
         INSTANCE = observed;
     }
@@ -40,4 +43,17 @@ public class CmdObserved extends Observable {
         this.notifyObservers(vo);
     }
 
+    /**
+     * 获取被观察者实例
+     */
+    public static CmdObserved getInstance(){
+        return INSTANCE;
+    }
+
+    /**
+     * 是否有观察者
+     */
+    public static boolean isObserver(){
+        return IS_OBSERVE;
+    }
 }
