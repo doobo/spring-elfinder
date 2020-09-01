@@ -91,7 +91,7 @@
         if(file){
             $.ajax({
                 type:"GET",
-                url:"/elfinder/connector",
+                url:"./elfinder/connector",
                 data:{cmd:'get',target:file,conv:0},
                 success:function (res) {
                     tinyMCE.editors[0].setContent(res.content);
