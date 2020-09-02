@@ -42,3 +42,9 @@ file-manager:
 #        #bindedDomain: "cdn-bk1.origocoffee.com"
 #        accessKeyId: ENC(******)
 #        accessKeySecret: ENC(******)
+
+# 日志级别
+logging:
+  level:
+    root: warn
+    cn.yours: info
