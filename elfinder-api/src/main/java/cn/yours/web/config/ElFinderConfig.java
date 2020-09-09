@@ -63,7 +63,7 @@ public class ElFinderConfig {
             String path = elfinderConfigurationVolume.getPath();
             final String source = elfinderConfigurationVolume.getSource();
             if(VolumeSources.FILESYSTEM.name().equalsIgnoreCase(source)){
-                path = ElfinderConfigurationUtils.createFile(path.trim(), ".elfinder").getParentFile().getAbsolutePath();
+                path = ElfinderConfigurationUtils.createDirIfAbsent(path.trim()).getAbsolutePath();
                 elfinderConfigurationVolume.setPath(path);
             }
             final String locale = elfinderConfigurationVolume.getLocale();

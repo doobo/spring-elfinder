@@ -99,4 +99,18 @@ public final class ElfinderConfigurationUtils {
         }
         return file;
     }
+
+    /**
+     * 如果目录不存在,则创建目录
+     * @param path
+     */
+    public static File createDirIfAbsent(String path){
+        File folder = new File(path);
+        //文件夹路径不存在
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+        return folder;
+    }
+    
 }
