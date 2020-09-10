@@ -1,13 +1,12 @@
-package cn.yours.web.consume;
+package cn.yours.elfinder.configuration;
 
-import cn.yours.elfinder.configuration.CmdObserved;
 import cn.yours.elfinder.param.ObServerVO;
 
 import java.util.Observable;
 import java.util.Observer;
 
 /**
- * cmd执行后处理
+ * 命名执行后的观察者
  */
 public abstract class CmdObserver implements Observer {
     

@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.stream.Collectors;
 
 /**
  * 被观察者
@@ -28,8 +29,11 @@ public class CmdObserved extends Observable {
     @PostConstruct
     public void observerRegister() {
         if(observerList != null && !observerList.isEmpty()) {
-            observerList.forEach(this::addObserver);
-            IS_OBSERVE = true;
+            observerList.stream().filter(f->f instanceof CmdObserver).forEach(this::addObserver);
+            if(observerList.stream().anyMatch(f -> f instanceof CmdObserver)){
+                observerList = observerList.stream().filter(f->f instanceof CmdObserver).collect(Collectors.toList());
+                IS_OBSERVE = true;
+            }
         }
         INSTANCE = observed;
     }
@@ -55,5 +59,12 @@ public class CmdObserved extends Observable {
      */
     public static boolean isObserver(){
         return IS_OBSERVE;
+    }
+
+    /**
+     * 获取所有观察者
+     */
+    public List<Observer> getObserverList() {
+        return observerList;
     }
 }

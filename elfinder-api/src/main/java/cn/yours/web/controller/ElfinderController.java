@@ -58,7 +58,7 @@ public class ElfinderController {
         //解析传过来的CMD参数
         String cmd = request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_COMMAND);
         ElfinderCommand elfinderCommand = elfinderCommandFactory.get(cmd);
-        logger.info("cmd : "+cmd);
+        logger.debug("cmd : "+cmd);
         try {
             final HttpServletRequest protectedRequest = request;
             elfinderCommand.execute(new ElfinderContext() {
