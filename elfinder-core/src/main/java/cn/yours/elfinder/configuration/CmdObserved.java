@@ -42,7 +42,7 @@ public class CmdObserved extends Observable {
      * 广播信息
      * @param vo
      */
-    public void sendCmdResult(ObServerVO vo){
+    public synchronized void sendCmdResult(ObServerVO vo){
         this.setChanged();
         this.notifyObservers(vo);
     }
