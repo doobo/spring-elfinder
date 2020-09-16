@@ -16,15 +16,10 @@ import java.util.stream.Collectors;
 @Component
 public class CmdObserved extends Observable {
     
-    private static CmdObserved INSTANCE;
-    
     private static boolean IS_OBSERVE;
 
     @Autowired(required = false)
     private List<Observer> observerList;
-    
-    @Autowired
-    private CmdObserved observed;
 
     @PostConstruct
     public void observerRegister() {
@@ -35,7 +30,6 @@ public class CmdObserved extends Observable {
                 IS_OBSERVE = true;
             }
         }
-        INSTANCE = observed;
     }
 
     /**
@@ -46,14 +40,7 @@ public class CmdObserved extends Observable {
         this.setChanged();
         this.notifyObservers(vo);
     }
-
-    /**
-     * 获取被观察者实例
-     */
-    public static CmdObserved getInstance(){
-        return INSTANCE;
-    }
-
+    
     /**
      * 是否有观察者
      */

@@ -33,6 +33,7 @@ package cn.yours.elfinder.command;
 
 import cn.yours.elfinder.ElFinderConstants;
 import cn.yours.elfinder.configuration.CmdObserved;
+import cn.yours.elfinder.configuration.CmdObservedUtils;
 import cn.yours.elfinder.param.ObServerVO;
 import cn.yours.elfinder.service.ElfinderStorage;
 import org.json.JSONObject;
@@ -57,7 +58,7 @@ public abstract class AbstractJsonCommand extends AbstractCommand {
                         .setResult(json)
                         .setElfinderStorage(elfinderStorage)
                         .setCmd(request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_COMMAND));
-                CmdObserved.getInstance().sendCmdResult(vo);
+                CmdObservedUtils.getInstance().sendCmdResult(vo);
             }
             response.setContentType(APPLICATION_JSON_CHARSET_UTF_8);
             json.write(writer);
