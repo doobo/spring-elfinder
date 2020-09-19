@@ -79,10 +79,12 @@
                     });
                     setTimeout(function(){
                         $(".swal2-center").css("display","none");
+                        $("body").removeClass("swal2-shown","swal2-height-auto");
                     }, 1000);
                 },
                 error:function (err) {
                     $(".swal2-center").css("display","none");
+                    $("body").removeClass("swal2-shown","swal2-height-auto");
                     console.error(err);
                 }
             });
