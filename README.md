@@ -11,7 +11,7 @@
 <dependency>
     <groupId>com.github.doobo</groupId>
     <artifactId>elfinder-api</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
 </dependency>
 ```
 
@@ -97,6 +97,21 @@ file-manager:
         </exclusion>
     </exclusions>
 </dependency>
+```
+
+## 获取文件上传的系统路径
+```
+
+public static VolumeHandler findTarget(ElfinderStorage elfinderStorage, String hash) {
+    Target target = elfinderStorage.fromHash(hash);
+    if (target == null) {
+        return null;
+    }
+    return new VolumeHandler(target, elfinderStorage);
+}
+VolumeHandler handler = vo.getVolumeHandlerByHash(hash);
+//文件存放的系统路径
+String name = handler.getTarget().toString();
 ```
 
 ## 参考文献
