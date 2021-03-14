@@ -57,7 +57,9 @@ public abstract class AbstractJsonCommand extends AbstractCommand {
                 ObServerVO vo = new ObServerVO()
                         .setResult(json)
                         .setElfinderStorage(elfinderStorage)
-                        .setCmd(request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_COMMAND));
+                        .setParams(request.getParameterMap())
+                        .setCmd(request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_COMMAND))
+                        .setTarget(request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_TARGET));
                 CmdObservedUtils.getInstance().sendCmdResult(vo);
             }
             response.setContentType(APPLICATION_JSON_CHARSET_UTF_8);

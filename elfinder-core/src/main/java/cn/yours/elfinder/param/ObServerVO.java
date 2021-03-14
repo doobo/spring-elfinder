@@ -4,6 +4,7 @@ import cn.yours.elfinder.service.ElfinderStorage;
 import cn.yours.elfinder.service.VolumeHandler;
 import org.json.JSONObject;
 import java.io.Serializable;
+import java.util.Map;
 
 import static cn.yours.elfinder.command.AbstractCommand.findTarget;
 
@@ -18,6 +19,11 @@ public class ObServerVO implements Serializable {
     private String cmd;
 
     /**
+     * 目标目录
+     */
+    private String target;
+
+    /**
      * 执行结构
      */
     private JSONObject result;
@@ -26,6 +32,11 @@ public class ObServerVO implements Serializable {
      * 存储库信息
      */
     private ElfinderStorage elfinderStorage;
+
+    /**
+     * request请求入参
+     */
+    private Map<String, String[]> params;
     
     public ObServerVO() {
     }
@@ -63,5 +74,23 @@ public class ObServerVO implements Serializable {
      */
     public VolumeHandler getVolumeHandlerByHash(String code){
         return findTarget(elfinderStorage, code);
+    }
+
+    public Map<String, String[]> getParams() {
+        return params;
+    }
+
+    public ObServerVO setParams(Map<String, String[]> params) {
+        this.params = params;
+        return this;
+    }
+
+    public String getTarget() {
+        return target;
+    }
+
+    public ObServerVO setTarget(String target) {
+        this.target = target;
+        return this;
     }
 }

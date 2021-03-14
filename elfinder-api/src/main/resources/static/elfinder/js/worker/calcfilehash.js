@@ -4,11 +4,11 @@ var type = self.data.type,
 
 self.res = {};
 if (type === 'md5') {
-	var sp = new self.SparkMD5.ArrayBuffer();
+	let sp = new self.SparkMD5.ArrayBuffer();
 	sp.append(bin);
 	self.res.hash = sp.end();
 } else {
-	var sha = new jsSHA('SHA' + (type.length === 5? type : ('-' + type)).toUpperCase(), 'ARRAYBUFFER'),
+	let sha = new jsSHA('SHA' + (type.length === 5? type : ('-' + type)).toUpperCase(), 'ARRAYBUFFER'),
 		opts = {};
 	if (type === 'ke128') {
 		opts.shakeLen = hashOpts.shake128len;
