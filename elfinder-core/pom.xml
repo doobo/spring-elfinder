@@ -35,23 +35,8 @@
         <java-image-scaling.version>0.8.6</java-image-scaling.version>
     </properties>
 
-    <!-- http://www.slf4j.org/faq.html#excludingJCL -->
-    <repositories>
-        <repository>
-            <id>commons-logging-empty</id>
-            <name>empty artifacts for commons-logging and log4j</name>
-            <url>http://version99.qos.ch/</url>
-        </repository>
-    </repositories>
-
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>99-empty</version>
-                <optional>true</optional>
-            </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
