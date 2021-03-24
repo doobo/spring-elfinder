@@ -60,6 +60,9 @@ public class TmbCommand extends AbstractCommand implements ElfinderCommand {
         try (InputStream is = fsi.openInputStream()) {
             BufferedImage image = ImageIO.read(is);
             int width = 80;
+            if(image == null){
+                image = new BufferedImage(width, width, BufferedImage.TYPE_INT_RGB);
+            }
             ResampleOp rop = new ResampleOp(DimensionConstrain.createMaxDimension(width, -1));
             rop.setNumberOfThreads(4);
             BufferedImage b = rop.filter(image, null);

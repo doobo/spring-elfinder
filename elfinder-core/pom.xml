@@ -137,31 +137,36 @@
         <dependency>
             <groupId>com.aliyun.oss</groupId>
             <artifactId>aliyun-sdk-oss</artifactId>
-            <version>3.8.0</version>
+            <version>3.11.3</version>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.google.api-client</groupId>
             <artifactId>google-api-client</artifactId>
             <version>1.22.0</version>
+            <optional>true</optional>
         </dependency>
         <!-- http://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-java6 -->
         <dependency>
             <groupId>com.google.oauth-client</groupId>
             <artifactId>google-oauth-client-java6</artifactId>
             <version>1.11.0-beta</version>
+            <optional>true</optional>
         </dependency>
         <!-- http://mvnrepository.com/artifact/com.google.apis/google-api-services-drive -->
         <dependency>
             <groupId>com.google.apis</groupId>
             <artifactId>google-api-services-drive</artifactId>
             <version>v3-rev27-1.22.0</version>
+            <optional>true</optional>
         </dependency>
         <!-- http://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty -->
         <dependency>
             <groupId>com.google.oauth-client</groupId>
             <artifactId>google-oauth-client-jetty</artifactId>
             <version>1.11.0-beta</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
     
