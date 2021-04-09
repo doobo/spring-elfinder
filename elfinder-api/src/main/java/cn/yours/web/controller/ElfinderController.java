@@ -11,6 +11,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,13 +34,15 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("elfinder/connector")
+@CrossOrigin(origins = "*", maxAge = 3600)
+@ConditionalOnProperty(name = "elfinder.start", matchIfMissing = true, havingValue = "true")
 public class ElfinderController {
 
     private static final Logger logger = LoggerFactory.getLogger(ElfinderController.class);
 
     public static final String OPEN_STREAM = "openStream";
+    
     public static final String GET_PARAMETER = "getParameter";
 
     @Resource(name = "commandFactory")

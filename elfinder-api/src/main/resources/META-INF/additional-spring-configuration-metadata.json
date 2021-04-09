@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "elfinder.start",
+      "type": "java.lang.Boolean",
+      "description": "does elfinder start."
+  }
+] }

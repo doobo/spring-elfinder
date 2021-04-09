@@ -2,16 +2,16 @@
 
 > 简单的文件管理工具,基于springboot2,主要方便集成到项目中去,方便浏览系统文件,如日志、系统定时生成静态页面等
 
-关于权限问题，不在该项目的考虑范围内，自己拦截相关URL即可，也可用专门的权限框架实现。集成的md文档编辑器,方便编辑普通文本文件;
-相关页面调用http接口时，如果localstorage有token或者authorization时，会自动加入的ajx的header上,添加了执行结束后广播，
-方便在文件操作完成(如:文件上传、删除、压缩、下载)时，进行相关业务处理，继承CmdObserver抽象类，并暴露被bean容器即可。
+关于权限问题，不在该项目的考虑范围内，自己拦截相关URL即可，也可主动继承ElfinderController实现。集成的md文档编辑器,方便编辑普通文本文件;
+相关页面调用http接口时，如果localstorage有token或者authorization时，会自动加入的ajx的header上；并添加了执行结束后的消息订阅，
+方便在文件操作(如:文件上传、删除、压缩、下载)完成后，进行相关业务处理，只要继承CmdObserver抽象类即可。
 
 ## 如何添加
 ```
 <dependency>
     <groupId>com.github.doobo</groupId>
     <artifactId>elfinder-api</artifactId>
-    <version>1.3</version>
+    <version>1.4</version>
 </dependency>
 ```
 
@@ -32,6 +32,9 @@ cmd:put
 target:A_c3RhdGljL3NmMS9hcnRpY2xlLm1pbi5qcw_E_E
 encoding:UTF-8
 content:保存内容
+
+创建目录,并返回目录hast值,方便上传文件时指定目录
+http://localhost:8080/elfinder/connector?cmd=mkdir&name=%08abc&target=A_&reqid=178b69b73bdda
 ```
 
 ## 基本配置
@@ -78,6 +81,10 @@ file-manager:
 #        #bindedDomain: "cdn-bk1.origocoffee.com"
 #        accessKeyId: ENC(******)
 #        accessKeySecret: ENC(******)
+
+#是否启用ElfinderController,可自主实现
+elfinder:
+  start: true
 ```
 
 ## JSON包排除

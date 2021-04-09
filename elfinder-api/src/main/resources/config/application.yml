@@ -42,3 +42,6 @@ file-manager:
 #jasypt:
 #  encryptor:
 #    password: abc
+
+#elfinder:
+#  start: true
