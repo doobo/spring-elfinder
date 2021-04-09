@@ -9,10 +9,6 @@ spring:
       max-file-size: 10GB
       max-request-size: 30GB
 
-jasypt:
-  encryptor:
-    password: abc
-
 file-manager:
   thumbnail:
     width: 80 # 缩略图宽
@@ -42,3 +38,7 @@ file-manager:
 #        #bindedDomain: "cdn-bk1.origocoffee.com"
 #        accessKeyId: ENC(******)
 #        accessKeySecret: ENC(******)
+
+#jasypt:
+#  encryptor:
+#    password: abc
