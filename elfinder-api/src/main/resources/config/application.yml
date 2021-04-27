@@ -8,6 +8,13 @@ spring:
     multipart:
       max-file-size: 10GB
       max-request-size: 30GB
+  
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
 
 file-manager:
   thumbnail:
