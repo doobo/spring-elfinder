@@ -9,6 +9,13 @@ import java.util.Observer;
  * 命名执行后的观察者
  */
 public abstract class CmdObserver implements Observer {
+
+    /**
+     * 匹配规则,返回true才执行handleObserver方法
+     */
+    public boolean matching(ObServerVO vo){
+        return Boolean.TRUE;
+    }
     
     @Override
     public void update(Observable o, Object arg) {
@@ -16,7 +23,9 @@ public abstract class CmdObserver implements Observer {
             return;
         }
         ObServerVO vo = (ObServerVO) arg;
-        handleObserver(vo);
+        if(matching(vo)) {
+            handleObserver(vo);
+        }
     }
     
     public abstract void handleObserver(ObServerVO vo);

@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UploadCmdObserver extends CmdObserver {
+
+    @Override
+    public boolean matching(ObServerVO vo) {
+        return "upload".equals(vo.getCmd());
+    }
+
     @Override
     public void handleObserver(ObServerVO vo) {
         System.out.println(vo.getResult().toString());
