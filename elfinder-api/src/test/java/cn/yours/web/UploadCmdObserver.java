@@ -1,22 +1,24 @@
 package cn.yours.web;
 
-import cn.yours.elfinder.configuration.CmdObserver;
-import cn.yours.elfinder.param.ObServerVO;
+import cn.yours.elfinder.obs.AbstractCmdObserver;
+import cn.yours.elfinder.obs.ObServerRequest;
 import org.springframework.stereotype.Component;
+
+import java.util.Observable;
 
 /**
  * 命名执行后观察者测试
  */
 @Component
-public class UploadCmdObserver extends CmdObserver {
+public class UploadCmdObserver extends AbstractCmdObserver {
 
     @Override
-    public boolean matching(ObServerVO vo) {
+    public boolean matching(ObServerRequest vo) {
         return "upload".equals(vo.getCmd());
     }
 
     @Override
-    public void handleObserver(ObServerVO vo) {
+    public void executor(ObServerRequest vo, Observable o) {
         System.out.println(vo.getResult().toString());
     }
 }

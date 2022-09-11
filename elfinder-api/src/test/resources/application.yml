@@ -1,32 +1,24 @@
 spring:
-  http:
-    encoding:
-      charset: utf-8
-      force: true
-      enabled: true
   servlet:
     multipart:
       max-file-size: 10GB
       max-request-size: 30GB
 
-jasypt:
-  encryptor:
-    password: abc
-
-file-manager:
-  thumbnail:
-    width: 80 # 缩略图宽
-  volumes:
-    - Node:
-      source: fileSystem # 暂时只支持本地文件系统
-      alias: 系统目录 # 目录别名
-      path: data # 映射目录
-      isDefault: true # 是否默认打开
-      locale:
-      constraint:
-        locked: false # 文件夹是否锁定
-        readable: true # 是否可读
-        writable: true # 是否可写
+#file-manager:
+#  start: false
+#  thumbnail:
+#    width: 80 # 缩略图宽
+#  volumes:
+#    - Node:
+#      source: fileSystem # 暂时只支持本地文件系统
+#      alias: 系统目录 # 目录别名
+#      path: data # 映射目录
+#      isDefault: true # 是否默认打开
+#      locale:
+#      constraint:
+#        locked: false # 文件夹是否锁定
+#        readable: true # 是否可读
+#        writable: true # 是否可写
 #    - Node:
 #      source: aliyunoss # 暂时只支持本地文件系统
 #      alias: 阿里云 # 目录别名

@@ -29,7 +29,7 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  * #L%
  */
-package cn.yours.elfinder.configuration;
+package cn.yours.elfinder.obs;
 
 import java.io.File;
 import java.io.IOException;
@@ -102,7 +102,6 @@ public final class ElfinderConfigurationUtils {
 
     /**
      * 如果目录不存在,则创建目录
-     * @param path
      */
     public static File createDirIfAbsent(String path){
         File folder = new File(path);

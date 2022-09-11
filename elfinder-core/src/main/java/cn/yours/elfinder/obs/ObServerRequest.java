@@ -1,4 +1,4 @@
-package cn.yours.elfinder.param;
+package cn.yours.elfinder.obs;
 
 import cn.yours.elfinder.service.ElfinderStorage;
 import cn.yours.elfinder.service.VolumeHandler;
@@ -11,7 +11,7 @@ import static cn.yours.elfinder.command.AbstractCommand.findTarget;
 /**
  * 广播信息载体
  */
-public class ObServerVO implements Serializable {
+public class ObServerRequest implements Serializable {
 
     /**
      * 命令类型
@@ -38,14 +38,14 @@ public class ObServerVO implements Serializable {
      */
     private Map<String, String[]> params;
     
-    public ObServerVO() {
+    public ObServerRequest() {
     }
 
     public JSONObject getResult() {
         return result;
     }
 
-    public ObServerVO setResult(JSONObject result) {
+    public ObServerRequest setResult(JSONObject result) {
         this.result = result;
         return this;
     }
@@ -54,7 +54,7 @@ public class ObServerVO implements Serializable {
         return cmd;
     }
 
-    public ObServerVO setCmd(String cmd) {
+    public ObServerRequest setCmd(String cmd) {
         this.cmd = cmd;
         return this;
     }
@@ -63,7 +63,7 @@ public class ObServerVO implements Serializable {
         return elfinderStorage;
     }
 
-    public ObServerVO setElfinderStorage(ElfinderStorage elfinderStorage) {
+    public ObServerRequest setElfinderStorage(ElfinderStorage elfinderStorage) {
         this.elfinderStorage = elfinderStorage;
         return this;
     }
@@ -80,7 +80,7 @@ public class ObServerVO implements Serializable {
         return params;
     }
 
-    public ObServerVO setParams(Map<String, String[]> params) {
+    public ObServerRequest setParams(Map<String, String[]> params) {
         this.params = params;
         return this;
     }
@@ -89,7 +89,7 @@ public class ObServerVO implements Serializable {
         return target;
     }
 
-    public ObServerVO setTarget(String target) {
+    public ObServerRequest setTarget(String target) {
         this.target = target;
         return this;
     }

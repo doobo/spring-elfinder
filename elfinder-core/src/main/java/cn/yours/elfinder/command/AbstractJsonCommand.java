@@ -32,15 +32,15 @@
 package cn.yours.elfinder.command;
 
 import cn.yours.elfinder.ElFinderConstants;
-import cn.yours.elfinder.configuration.CmdObserved;
-import cn.yours.elfinder.configuration.CmdObservedUtils;
-import cn.yours.elfinder.param.ObServerVO;
+import cn.yours.elfinder.factory.ElfinderObservedFactory;
+import cn.yours.elfinder.obs.ObServerRequest;
 import cn.yours.elfinder.service.ElfinderStorage;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.Optional;
 
 public abstract class AbstractJsonCommand extends AbstractCommand {
 
@@ -53,14 +53,14 @@ public abstract class AbstractJsonCommand extends AbstractCommand {
         JSONObject json = new JSONObject();
         try (PrintWriter writer = response.getWriter()) {
             execute(elfinderStorage, request, json);
-            if(CmdObserved.isObserver()) {
-                ObServerVO vo = new ObServerVO()
+            if(!ElfinderObservedFactory.isEmpty(ElfinderObservedFactory.getHandlerList())) {
+                ObServerRequest vo = new ObServerRequest()
                         .setResult(json)
                         .setElfinderStorage(elfinderStorage)
                         .setParams(request.getParameterMap())
                         .setCmd(request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_COMMAND))
                         .setTarget(request.getParameter(ElFinderConstants.ELFINDER_PARAMETER_TARGET));
-                CmdObservedUtils.getInstance().sendCmdResult(vo);
+                Optional.ofNullable(ElfinderObservedFactory.getObserved()).ifPresent(c -> c.notifyChange(vo));
             }
             response.setContentType(APPLICATION_JSON_CHARSET_UTF_8);
             json.write(writer);

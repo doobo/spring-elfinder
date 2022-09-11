@@ -2,7 +2,7 @@ package cn.yours.web.config;
 
 import cn.yours.elfinder.ElFinderConstants;
 import cn.yours.elfinder.command.CommandFactory;
-import cn.yours.elfinder.configuration.ElfinderConfigurationUtils;
+import cn.yours.elfinder.obs.ElfinderConfigurationUtils;
 import cn.yours.elfinder.core.Volume;
 import cn.yours.elfinder.core.VolumeSecurity;
 import cn.yours.elfinder.core.impl.DefaultVolumeSecurity;
@@ -16,19 +16,31 @@ import cn.yours.elfinder.service.impl.DefaultElfinderStorageFactory;
 import cn.yours.elfinder.service.impl.DefaultThumbnailWidth;
 import cn.yours.elfinder.support.locale.LocaleUtils;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Primary;
 
-import javax.annotation.Resource;
 import java.util.*;
 
 @Configuration
+@DependsOn(value = "defaultElfinderConfiguration")
 public class ElFinderConfig {
 
-    @Resource
-    private ElfinderConfiguration elfinderConfiguration;
+    @Bean
+    @Primary
+    @ConfigurationProperties("file-manager")
+    @ConditionalOnProperty(name = "file-manager.start", havingValue = "true")
+    @ConditionalOnMissingBean(name = "elfinderConfiguration")
+    public ElfinderConfiguration elfinderConfiguration() {
+        return new ElfinderConfiguration();
+    }
 
     @Bean(name = "commandFactory")
+    @ConditionalOnMissingBean(CommandFactory.class)
     public CommandFactory getCommandFactory() {
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.setClassNamePattern("cn.yours.elfinder.command.%sCommand");
@@ -36,14 +48,16 @@ public class ElFinderConfig {
     }
     
     @Bean(name = "elfinderStorageFactory")
-    public ElfinderStorageFactory getElfinderStorageFactory() {
+    @ConditionalOnMissingBean(ElfinderStorageFactory.class)
+    public ElfinderStorageFactory getElfinderStorageFactory(ElfinderConfiguration elfinderConfiguration) {
         DefaultElfinderStorageFactory elfinderStorageFactory = new DefaultElfinderStorageFactory();
-        elfinderStorageFactory.setElfinderStorage(getElfinderStorage());
+        elfinderStorageFactory.setElfinderStorage(getElfinderStorage(elfinderConfiguration));
         return elfinderStorageFactory;
     }
 
     @Bean(name = "elfinderStorage")
-    public ElfinderStorage getElfinderStorage() {
+    @ConditionalOnMissingBean(ElfinderStorage.class)
+    public ElfinderStorage getElfinderStorage(ElfinderConfiguration elfinderConfiguration) {
         DefaultElfinderStorage defaultElfinderStorage = new DefaultElfinderStorage();
         // creates thumbnail
         DefaultThumbnailWidth defaultThumbnailWidth = new DefaultThumbnailWidth();
@@ -100,5 +114,4 @@ public class ElFinderConfig {
 
         return defaultElfinderStorage;
     }
-
 }

@@ -1,0 +1,15 @@
+manager-default:
+  start: true
+  thumbnail:
+    width: 80 # 缩略图宽
+  volumes:
+    - Node:
+      source: fileSystem # 暂时只支持本地文件系统
+      alias: 根目录 # 目录别名
+      path: data # 映射目录
+      isDefault: true # 是否默认打开
+      locale:
+      constraint:
+        locked: false # 文件夹是否锁定
+        readable: true # 是否可读
+        writable: true # 是否可写

@@ -1,6 +1,6 @@
 package cn.yours.elfinder.core.impl.aliyunoss;
 
-import cn.yours.elfinder.configuration.ElfinderConfigurationUtils;
+import cn.yours.elfinder.obs.ElfinderConfigurationUtils;
 import cn.yours.elfinder.core.Target;
 import cn.yours.elfinder.core.Volume;
 import cn.yours.elfinder.ElFinderConstants;

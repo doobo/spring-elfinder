@@ -33,6 +33,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 @Controller
 @RequestMapping("elfinder/connector")
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -55,6 +57,7 @@ public class ElfinderController {
     public void connector(HttpServletRequest request, final HttpServletResponse response) throws IOException {
         try {
             request = processMultipartContent(request);
+            response.setCharacterEncoding(UTF_8.name());
         } catch (Exception e) {
             throw new IOException(e.getMessage());
         }
@@ -100,7 +103,6 @@ public class ElfinderController {
             }else{
                 requestParams.put(key,obj);
             }
-
         }
 
         AbstractMultipartHttpServletRequest multipartHttpServletRequest = (AbstractMultipartHttpServletRequest)request;
@@ -108,7 +110,7 @@ public class ElfinderController {
         ServletFileUpload servletFileUpload = new ServletFileUpload();
         String characterEncoding = request.getCharacterEncoding();
         if (characterEncoding == null) {
-            characterEncoding = "UTF-8";
+            characterEncoding = UTF_8.name();
         }
         servletFileUpload.setHeaderEncoding(characterEncoding);
 
@@ -155,8 +157,7 @@ public class ElfinderController {
                     }
                 });
     }
-
-
+    
     private FileItemStream createFileItemStream(MultipartFile file){
         return new FileItemStream() {
             @Override

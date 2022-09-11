@@ -31,7 +31,7 @@
  */
 package cn.yours.elfinder.service;
 
-import cn.yours.elfinder.configuration.ElfinderConfigurationUtils;
+import cn.yours.elfinder.obs.ElfinderConfigurationUtils;
 import cn.yours.elfinder.core.Volume;
 import cn.yours.elfinder.core.VolumeBuilder;
 import cn.yours.elfinder.core.impl.aliyunoss.AliyunOssFileSystemVolume;

@@ -4,5 +4,15 @@
       "name": "elfinder.start",
       "type": "java.lang.Boolean",
       "description": "does elfinder start."
-  }
-] }
+    },
+    {
+      "name": "file-manager.start",
+      "type": "java.lang.String",
+      "description": "Description for file-manager.start."
+    },
+    {
+      "name": "file-manager.thumbnail.width",
+      "type": "java.lang.Integer",
+      "description": "Description for file-manager.thumbnail.width."
+    }
+  ] }

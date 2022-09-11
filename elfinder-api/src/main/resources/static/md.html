@@ -28,6 +28,7 @@
 <script type="text/javascript">
     (function () {
         var file = queryUrlParam("file");
+        var conv = queryUrlParam("conv") || '0';
         if(file){
             swal.fire({
                 title: "...",
@@ -38,7 +39,7 @@
             $.ajax({
                 type:"GET",
                 url:"./elfinder/connector",
-                data:{cmd:'get',target:file,conv:0},
+                data:{cmd:'get', target:file, conv:conv},
                 success:function (res) {
                     window._editor = editormd("editor", {
                         width: "100%",
