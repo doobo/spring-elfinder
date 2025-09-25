@@ -31,6 +31,9 @@
  */
 package cn.yours.elfinder.support.nio;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -44,6 +47,8 @@ import java.util.*;
  * @author Thiago Gutenberg Carvalho da Costa
  */
 public final class NioHelper {
+
+    private static final Logger logger = LoggerFactory.getLogger(NioHelper.class);
 
     private NioHelper() {
         // supress the default constructor
@@ -285,7 +290,12 @@ public final class NioHelper {
         // not hidden file filter
         DirectoryStream.Filter<Path> notHiddenFilter = new DirectoryStream.Filter<Path>() {
             public boolean accept(Path path) throws IOException {
-                return !Files.isHidden(path);
+                try {
+                    return !Files.isHidden(path);
+                }catch (AccessDeniedException e) {
+                    logger.error("Access denied,", e);
+                    return false;
+                }
             }
         };
         return listChildren(dir, notHiddenFilter);

@@ -272,11 +272,10 @@ public class NIO2FileSystemVolume implements Volume {
         //createFile(dst);
         dst.getVolume().createFile(dst);
 
-        InputStream is = src.getVolume().openInputStream(src);
-        OutputStream os = NioHelper.openOutputStream(fromTarget(dst));
-        IOUtils.copy(is, os);
-        is.close();
-        os.close();
+        try(InputStream is = src.getVolume().openInputStream(src);
+            OutputStream os = NioHelper.openOutputStream(fromTarget(dst))) {
+            IOUtils.copy(is, os);
+        }
     }
 
     private void createAndCopyFolder(Target src, Target dst) throws IOException {

@@ -62,13 +62,12 @@ public class FileCommand extends AbstractCommand implements ElfinderCommand {
 			response.setHeader("Content-Transfer-Encoding", "binary");
 		}
 
-		OutputStream out = response.getOutputStream();
 		response.setContentLength((int) fsi.getSize());
 
-		try (InputStream is = fsi.openInputStream()) {
+		try (InputStream is = fsi.openInputStream();
+			 OutputStream out = response.getOutputStream()) {
 			IOUtils.copy(is, out);
 			out.flush();
-			//out.close();
 		}
 	}
 
