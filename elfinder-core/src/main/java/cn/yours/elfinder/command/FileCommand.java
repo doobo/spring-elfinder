@@ -68,7 +68,7 @@ public class FileCommand extends AbstractCommand implements ElfinderCommand {
 		try (InputStream is = fsi.openInputStream()) {
 			IOUtils.copy(is, out);
 			out.flush();
-			out.close();
+			//out.close();
 		}
 	}
 

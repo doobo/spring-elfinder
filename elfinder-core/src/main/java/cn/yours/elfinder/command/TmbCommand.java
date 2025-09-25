@@ -35,6 +35,7 @@ import cn.yours.elfinder.service.ElfinderStorage;
 import cn.yours.elfinder.service.VolumeHandler;
 import com.mortennobel.imagescaling.DimensionConstrain;
 import com.mortennobel.imagescaling.ResampleOp;
+import org.apache.commons.io.IOUtils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -43,7 +44,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 public class TmbCommand extends AbstractCommand implements ElfinderCommand {
@@ -58,16 +59,19 @@ public class TmbCommand extends AbstractCommand implements ElfinderCommand {
         final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(pattern);
 
         try (InputStream is = fsi.openInputStream()) {
-            BufferedImage image = ImageIO.read(is);
+            //BufferedImage image = ImageIO.read(is);
+            // 先将流读入内存，避免Windows下ImageIO锁文件
+            byte[] imageBytes = IOUtils.toByteArray(is);
+            BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageBytes));
             int width = 80;
             if(image == null){
                 image = new BufferedImage(width, width, BufferedImage.TYPE_INT_RGB);
             }
             ResampleOp rop = new ResampleOp(DimensionConstrain.createMaxDimension(width, -1));
-            rop.setNumberOfThreads(4);
+            //rop.setNumberOfThreads(4);
             BufferedImage b = rop.filter(image, null);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(b, "png", baos);
+            //ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            //ImageIO.write(b, "png", baos);
 
             response.setHeader("Last-Modified", dateTimeFormatter.print(dateTime));
             response.setHeader("Expires", dateTimeFormatter.print(dateTime.plusYears(2)));

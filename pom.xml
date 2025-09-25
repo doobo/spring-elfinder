@@ -64,6 +64,8 @@
 		<plugin.release.version>2.5.3</plugin.release.version>
 		<maven.test.skip>true</maven.test.skip>
 	</properties>
+	<!--mvn clean install -DskipTests -Dgpg.skip=true-->
+	<!--mvn clean install -DskipTests "-Dgpg.skip=true"-->
 
 	<modules>
 		<module>elfinder-core</module>
