@@ -123,6 +123,7 @@
 					<checkModificationExcludes>
 						<checkModificationExclude>.gitignore</checkModificationExclude>
 						<checkModificationExclude>install.sh</checkModificationExclude>
+						<checkModificationExclude>install.bat</checkModificationExclude>
 						<checkModificationExclude>pom.xml</checkModificationExclude>
 						<checkModificationExclude>README.md</checkModificationExclude>
 					</checkModificationExcludes>
