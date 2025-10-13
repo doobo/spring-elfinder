@@ -5,7 +5,7 @@
 	<groupId>com.github.doobo</groupId>
 	<artifactId>elfinder-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.7-SNAPSHOT</version>
+	<version>1.6-SNAPSHOT</version>
 
 	<name>elfinder-parent</name>
 	<url>https://github.com/doobo/spring-elfinder</url>
@@ -61,7 +61,7 @@
 		<source-plugin.version>3.0.1</source-plugin.version>
 		<javadoc-plugin.version>3.0.1</javadoc-plugin.version>
 		<gpg-plugin.version>1.6</gpg-plugin.version>
-		<plugin.release.version>2.5.3</plugin.release.version>
+		<plugin.release.version>3.1.1</plugin.release.version>
 		<maven.test.skip>true</maven.test.skip>
 	</properties>
 	<!--mvn clean install -DskipTests -Dgpg.skip=true-->
@@ -81,6 +81,44 @@
 			<properties>
 				<additionalparam>-Xdoclint:none</additionalparam>
 			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
+						<version>0.8.0</version>
+						<extensions>true</extensions>
+						<configuration>
+							<publishingServerId>oss</publishingServerId>
+							<autoPublish>true</autoPublish>
+						</configuration>
+					</plugin>
+					<!-- 控制 release 流程 -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-release-plugin</artifactId>
+						<version>3.1.1</version>
+						<configuration>
+							<tagNameFormat>v@{project.version}</tagNameFormat>
+							<autoVersionSubmodules>true</autoVersionSubmodules>
+							<useReleaseProfile>false</useReleaseProfile>
+							<releaseProfiles>release</releaseProfiles>
+							<goals>deploy</goals>
+							<arguments>-DskipTests</arguments>
+							<checkModificationExcludes>
+								<checkModificationExclude>.gitignore</checkModificationExclude>
+								<checkModificationExclude>install.sh</checkModificationExclude>
+								<checkModificationExclude>install.bat</checkModificationExclude>
+								<checkModificationExclude>pom.xml</checkModificationExclude>
+								<checkModificationExclude>README.md</checkModificationExclude>
+							</checkModificationExcludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 
