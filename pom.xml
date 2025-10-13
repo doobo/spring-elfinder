@@ -5,7 +5,7 @@
 	<groupId>com.github.doobo</groupId>
 	<artifactId>elfinder-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.7-SNAPSHOT</version>
+	<version>1.6-SNAPSHOT</version>
 
 	<name>elfinder-parent</name>
 	<url>https://github.com/doobo/spring-elfinder</url>
@@ -30,14 +30,14 @@
 		<repository>
 			<id>oss</id>
 			<url>
-				https://oss.sonatype.org/service/local/staging/deploy/maven2
+				https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2
 			</url>
 		</repository>
 		<snapshotRepository>
 			<id>oss</id>
 			<uniqueVersion>false</uniqueVersion>
 			<url>
-				https://oss.sonatype.org/content/repositories/snapshots
+				https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots
 			</url>
 		</snapshotRepository>
 	</distributionManagement>
