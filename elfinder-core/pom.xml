@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.github.doobo</groupId>
         <artifactId>elfinder-parent</artifactId>
-        <version>1.8-SNAPSHOT</version>
+        <version>1.6-SNAPSHOT</version>
     </parent>
     
     <artifactId>elfinder-core</artifactId>
